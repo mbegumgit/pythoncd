@@ -1,12 +1,21 @@
 import re
-import typing
-
 
 class newcls:
-    def __init__(self):  # defining list  of integer and target value
-        string1 = input()
-        self.arr = list(map(int, filter(None, re.split('\W', string1))))
-        self.t = int(input())
+    def __init__(self):  # reading file name and target value
+        self.file = input('Enter File Name')
+        self.t = int(input('Enter target value'))
+        self.arr = []
+
+    def get_input(self):  # reading list of integer value from a file into an array
+
+        with open(self.file, 'r') as data:
+            string1 = data.read()
+            arr = list(map(int, re.split('\W', string1)))
+
+        #        value = list(map(int, filter(None, re.split('\W', string1))))
+
+        print('List =', arr)
+        self.arr = arr
 
     def sum1(self):  # finding indexes from the list whose sum value equals target
         found = 0
@@ -23,11 +32,12 @@ class newcls:
             print("No target matching")
         else:
             out = [index1, index2]
-            out.append(index1)
-            out.append(index2)
+            #    out.append(index1) #another way of inserting value in list
+            #    out.append(index2)
 
             print(out)
 
 
 obj1 = newcls()
+obj1.get_input()
 obj1.prt()
